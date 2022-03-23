@@ -1,0 +1,23 @@
+from flask import Flask, render_template, redirect
+import pymongo
+import scrape_mars
+import pandas as pd 
+
+# Set up flask
+app = Flask(__name__)
+
+# Connect to pymongo
+conn = "mongodb://localhost:27017/mars_database"
+client = pymongo.MongoClient(conn)
+
+
+
+@app.route("/scrape")
+def scrape():
+	mars = client.db.mars_data 
+	data = scrape_mars.scrape()
+	mars.update({}, data)
+	return redirect("/", code=302)
+
+if __name__ == "__main__":
+	app.run(debug=True)

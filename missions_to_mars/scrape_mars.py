@@ -11,15 +11,11 @@ from splinter import Browser
 import requests
 import time
 from webdriver_manager.chrome import ChromeDriverManager
-import pymongo
-
-conn = 'mongodb://localhost:27017'
-client = pymongo.MongoClient(conn)
-db = client.team_db
 
 #Initializing browser and setting its path
-executable_path = {'executable_path': 'chromedriver.exe'}
-browser = Browser('chrome', **executable_path, headless=False)
+def init_browser():
+    executable_path = {'executable_path': 'chromedriver.exe'}
+    return Browser('chrome', **executable_path, headless=False)
 
 
 # Start by converting your Jupyter notebook into a Python script called 
@@ -30,6 +26,7 @@ def scrape():
 
 
     #Navigate to url for scraping
+    browser = init_browser()
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
     time.sleep(1)
@@ -117,6 +114,16 @@ def scrape():
         browser.back()
     all_urls
 
+    mars_info = {
+    "mars_news": {
+    "news_title": news_title,
+    "news_p": news_p,
+        },
+    "mars_img": featured_img,
+    "mars_fact": df,
+    "mars_hemisphere": all_urls
+    }
 
     browser.quit()
 
+    return mars_info
