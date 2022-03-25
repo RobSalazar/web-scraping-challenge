@@ -85,7 +85,7 @@ def scrape():
     #Convert to df and rename the columns, then for formatting remove index to keep end result clean
     df = mars[0]
     df.columns = ["Description" , "Value"]
-    df.to_html("marstable.html",index = False)
+    df.to_html("templates/marstable.html",index = False)
     
     
 
