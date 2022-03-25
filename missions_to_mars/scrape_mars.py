@@ -98,7 +98,7 @@ def scrape():
 
     #Container to hold  our loop iterations
     all_urls = []
-
+    
     #Iterate through the 4 different links to get the images needed
     for x in range(4):
         html = browser.html
@@ -117,12 +117,12 @@ def scrape():
         })
         browser.back()
     browser.quit()
-        
+   
     mars_data = {
         "news_title": news_title,
         "news_p": news_p,
         'featured_img': featured_img,
-        # "df": df,
+        
         "all_urls": all_urls
     }
     
