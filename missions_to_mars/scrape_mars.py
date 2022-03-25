@@ -18,15 +18,19 @@ def init_browser():
     return Browser('chrome', **executable_path, headless=False)
 
 
+
+
 # Start by converting your Jupyter notebook into a Python script called 
 # scrape_mars.py with a function called scrape that will execute all of your
 # scraping code from above and return one Python dictionary containing all of the scraped data.  
 def scrape():
-    # ## NASA Mars News 
+    
+    # ## NASA Mars News
 
-
-    #Navigate to url for scraping
     browser = init_browser()
+    
+    #Navigate to url for scraping
+    
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
     time.sleep(1)
@@ -82,8 +86,8 @@ def scrape():
     df = mars[0]
     df.columns = ["Description" , "Value"]
     df.to_html("marstable.html",index = False)
-    df
-
+    
+    
 
     # ## Mars Hemispheres
 
@@ -112,18 +116,14 @@ def scrape():
             "img_url": base_url+img_url
         })
         browser.back()
-    all_urls
-
-    mars_info = {
-    "mars_news": {
-    "news_title": news_title,
-    "news_p": news_p,
-        },
-    "mars_img": featured_img,
-    "mars_fact": df,
-    "mars_hemisphere": all_urls
-    }
-
     browser.quit()
-
-    return mars_info
+        
+    mars_data = {
+        "news_title": news_title,
+        "news_p": news_p,
+        'featured_img': featured_img,
+        # "df": df,
+        "all_urls": all_urls
+    }
+    
+    return mars_data
