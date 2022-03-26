@@ -8,9 +8,9 @@
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
-import requests
+
 import time
-from webdriver_manager.chrome import ChromeDriverManager
+
 
 #Initializing browser and setting its path
 def init_browser():
