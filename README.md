@@ -52,7 +52,7 @@ featured_image_url = 'https://spaceimages-mars.com/image/featured/mars2.jpg'
 
 ### Mars Hemispheres
 
-* Visit the astrogeology site [here](https://marshemispheres.com/) to obtain high resolution images for each of Mar's hemispheres.
+* Visit the astrogeology site [here](https://marshemispheres.com/) to obtain high resolution images for each of Mars hemispheres.
 
 ```python
 #Navigate to url for scraping
